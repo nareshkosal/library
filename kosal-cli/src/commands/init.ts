@@ -37,7 +37,7 @@ export async function initCommand() {
         "lib": "@/lib",
         "hooks": "@/hooks"
       },
-      "registry": "https://components-kosal.vercel.app"
+      "registry": "https://library-five-lovat.vercel.app"
     };
 
     // Add kosal config to package.json

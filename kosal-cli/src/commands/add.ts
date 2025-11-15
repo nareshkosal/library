@@ -107,7 +107,7 @@ async function getRegistryUrl(customUrl?: string): Promise<string> {
     // Fallback to default
   }
   
-  return 'https://components-kosal.vercel.app';
+  return 'https://library-five-lovat.vercel.app';
 }
 
 async function installDependencies(dependencies: string[]) {
