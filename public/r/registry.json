@@ -4,6 +4,145 @@
   "homepage": "https://components-kosal.vercel.app",
   "items": [
     {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "description": "A button component with different variants and sizes.",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "A styled input component.",
+      "files": [
+        {
+          "path": "registry/new-york/ui/input.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:component",
+      "title": "Label",
+      "description": "A styled label component.",
+      "dependencies": ["@radix-ui/react-label"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/label.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:component",
+      "title": "Separator",
+      "description": "A visual separator component.",
+      "dependencies": ["@radix-ui/react-separator"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/separator.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:component",
+      "title": "Sheet",
+      "description": "A sheet component for modal-like content.",
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/sheet.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:component",
+      "title": "Skeleton",
+      "description": "A skeleton loading component.",
+      "files": [
+        {
+          "path": "registry/new-york/ui/skeleton.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:component",
+      "title": "Tooltip",
+      "description": "A tooltip component for additional information.",
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/tooltip.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:component",
+      "title": "Card",
+      "description": "A card component for content containers.",
+      "files": [
+        {
+          "path": "registry/new-york/ui/card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:component",
+      "title": "Dialog",
+      "description": "A dialog component for modal content.",
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/dialog.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:component",
+      "title": "Textarea",
+      "description": "A styled textarea component.",
+      "files": [
+        {
+          "path": "registry/new-york/ui/textarea.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:component",
+      "title": "Dropdown Menu",
+      "description": "A dropdown menu component with trigger and content.",
+      "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/dropdown-menu.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "hello-world",
       "type": "registry:component",
       "title": "Hello World",

@@ -26,50 +26,7 @@ export async function addCommand(componentName: string, options: { registry?: st
     // Get registry URL from options or kosal config
     const registryUrl = await getRegistryUrl(options.registry);
     
-    // Fetch component data
-    spinner.text = `Fetching ${componentName} component...`;
-    const componentUrl = `${registryUrl}/r/${componentName}.json`;
-    
-    const response = await fetch(componentUrl);
-    
-    if (!response.ok) {
-      throw new Error(`Component "${componentName}" not found in registry`);
-    }
-    
-    const componentData = await response.json() as RegistryItem;
-    
-    spinner.text = 'Installing dependencies...';
-    
-    // Install dependencies
-    if (componentData.dependencies) {
-      await installDependencies(componentData.dependencies);
-    }
-    
-    // Install registry dependencies
-    if (componentData.registryDependencies) {
-      await installRegistryDependencies(componentData.registryDependencies, registryUrl);
-    }
-    
-    spinner.text = 'Creating component files...';
-    
-    // Create component files
-    await createComponentFiles(componentData.files, registryUrl);
-    
-    spinner.succeed(chalk.green(`✅ Component "${componentName}" installed successfully!`));
-    
-    console.log(chalk.blue('\n📋 Installation Summary:'));
-    console.log(chalk.white(`  • Component: ${componentData.title}`));
-    console.log(chalk.white(`  • Description: ${componentData.description}`));
-    
-    if (componentData.dependencies?.length) {
-      console.log(chalk.white(`  • Dependencies: ${componentData.dependencies.join(', ')}`));
-    }
-    
-    if (componentData.registryDependencies?.length) {
-      console.log(chalk.white(`  • Registry Dependencies: ${componentData.registryDependencies.join(', ')}`));
-    }
-    
-    console.log(chalk.green('\n🎉 Installation complete!'));
+    await installComponent(componentName, registryUrl, spinner);
     
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
@@ -87,6 +44,58 @@ export async function addCommand(componentName: string, options: { registry?: st
       spinner.fail(chalk.red(`❌ Failed to install component: ${errorMessage}`));
     }
     process.exit(1);
+  }
+}
+
+async function installComponent(componentName: string, registryUrl: string, spinner: any, isDependency = false) {
+  // Fetch component data
+  spinner.text = `Fetching ${componentName} component...`;
+  const componentUrl = `${registryUrl}/r/${componentName}.json`;
+  
+  const response = await fetch(componentUrl);
+  
+  if (!response.ok) {
+    console.error(`Failed to fetch ${componentUrl}: ${response.status} ${response.statusText}`);
+    throw new Error(`Component "${componentName}" not found in registry`);
+  }
+  
+  const componentData = await response.json() as RegistryItem;
+  
+  spinner.text = 'Installing dependencies...';
+  
+  // Install dependencies
+  if (componentData.dependencies) {
+    await installDependencies(componentData.dependencies);
+  }
+  
+  // Install registry dependencies first (recursive)
+  if (componentData.registryDependencies) {
+    for (const dep of componentData.registryDependencies) {
+      await installComponent(dep, registryUrl, spinner, true);
+    }
+  }
+  
+  spinner.text = 'Creating component files...';
+  
+  // Create component files
+  await createComponentFiles(componentData.files, registryUrl);
+  
+  if (!isDependency) {
+    spinner.succeed(chalk.green(`✅ Component "${componentName}" installed successfully!`));
+    
+    console.log(chalk.blue('\n📋 Installation Summary:'));
+    console.log(chalk.white(`  • Component: ${componentData.title}`));
+    console.log(chalk.white(`  • Description: ${componentData.description}`));
+    
+    if (componentData.dependencies?.length) {
+      console.log(chalk.white(`  • Dependencies: ${componentData.dependencies.join(', ')}`));
+    }
+    
+    if (componentData.registryDependencies?.length) {
+      console.log(chalk.white(`  • Registry Dependencies: ${componentData.registryDependencies.join(', ')}`));
+    }
+    
+    console.log(chalk.green('\n🎉 Installation complete!'));
   }
 }
 
@@ -121,22 +130,7 @@ async function installDependencies(dependencies: string[]) {
   }
 }
 
-async function installRegistryDependencies(dependencies: string[], registryUrl: string) {
-  for (const dep of dependencies) {
-    try {
-      // Check if it's a URL or a component name
-      if (dep.startsWith('http')) {
-        execSync(`npx shadcn@latest add ${dep}`, { stdio: 'inherit', cwd: process.cwd() });
-      } else {
-        // It's a component name, install from same registry
-        const depUrl = `${registryUrl}/r/${dep}.json`;
-        execSync(`npx shadcn@latest add ${depUrl}`, { stdio: 'inherit', cwd: process.cwd() });
-      }
-    } catch (error) {
-      console.warn(chalk.yellow(`⚠️  Could not install registry dependency: ${dep}`));
-    }
-  }
-}
+
 
 async function createComponentFiles(files: any[], registryUrl: string) {
   for (const file of files) {
@@ -146,7 +140,12 @@ async function createComponentFiles(files: any[], registryUrl: string) {
     try {
       // Fetch file content
       const response = await fetch(fileUrl);
-      const content = await response.text();
+      let content = await response.text();
+      
+      // Fix import paths to use @/ alias
+      content = content.replace(/from ['"]@\//g, "from '@/");
+      content = content.replace(/import\s+.*\s+from\s+['"]\.\.\/\.\.\/lib\/utils['"]/g, "import { cn } from '@/lib/utils'");
+      content = content.replace(/import\s+.*\s+from\s+['"]\.\.\/ui\//g, "import { $1 } from '@/components/ui/");
       
       // Ensure directory exists
       await fs.ensureDir(path.dirname(targetPath));
