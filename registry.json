@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "acme",
-  "homepage": "https://acme.com",
+  "name": "kosal",
+  "homepage": "https://components-kosal.vercel.app",
   "items": [
     {
       "name": "hello-world",
@@ -73,6 +73,78 @@
         {
           "path": "registry/new-york/blocks/example-with-css/example-card.css",
           "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:component",
+      "title": "Spinner Size",
+      "description": "A spinner component with different size variants.",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/spinner/spinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "split-display",
+      "type": "registry:block",
+      "title": "Split Display",
+      "description": "A 3D video display component with rotating panels using Three.js and React Three Fiber.",
+      "dependencies": ["@react-three/fiber", "@react-three/drei", "three"],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/split-display/split-display.tsx",
+          "type": "registry:component",
+          "target": "components/split-display.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/split-display/components/VideoPanel.tsx",
+          "type": "registry:component",
+          "target": "components/video-panel.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/split-display/components/VideoPanelGroup.tsx",
+          "type": "registry:component",
+          "target": "components/video-panel-group.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/split-display/components/MouseRotateGroup.tsx",
+          "type": "registry:component",
+          "target": "components/mouse-rotate-group.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/split-display/components/SceneBackground.tsx",
+          "type": "registry:component",
+          "target": "components/scene-background.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/split-display/hooks/use-video-element.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-video-element.ts"
+        },
+        {
+          "path": "registry/new-york/blocks/split-display/constants/panels.ts",
+          "type": "registry:lib",
+          "target": "lib/panels.ts"
+        },
+        {
+          "path": "registry/new-york/blocks/split-display/utils/get-panels-bbox.ts",
+          "type": "registry:lib",
+          "target": "lib/get-panels-bbox.ts"
+        },
+        {
+          "path": "registry/new-york/blocks/split-display/materials/VideoCropMaterial.ts",
+          "type": "registry:lib",
+          "target": "lib/video-crop-material.ts"
+        },
+        {
+          "path": "registry/new-york/blocks/split-display/types/three-jsx.d.ts",
+          "type": "registry:lib",
+          "target": "lib/three-jsx.d.ts"
         }
       ]
     }
