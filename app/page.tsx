@@ -8,6 +8,7 @@ import { SpinnerSize } from "@/registry/new-york/blocks/spinner/spinner"
 import { SplitDisplay } from "@/registry/new-york/blocks/split-display/split-display"
 // This page displays items from the custom registry.
 // You are free to implement this with your own design as needed.
+import { SidebarExample } from "@/registry/new-york/blocks/sidebar-example/sidebar-example"
 
 export default function Home() {
   return (
@@ -67,10 +68,21 @@ export default function Home() {
           <div className="flex items-center justify-center min-h-[400px] relative">
             <ExampleCard />
           </div>
-<SplitDisplay videoUrl="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"   containerClassName="h-[600px]"
+          <SplitDisplay videoUrl="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" containerClassName="h-[600px]"
             backgroundColor="black"
             sceneBackgroundColor="#000000"
-            showFrame/>
+            showFrame />
+        </div>
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              A sidebar example.
+            </h2>
+            <OpenInV0Button name="sidebar-example" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[400px] relative">
+            <SidebarExample />
+          </div>
         </div>
       </main>
     </div>

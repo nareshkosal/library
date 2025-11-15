@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "simple-sidebar",
+  "type": "registry:block",
+  "title": "Simple Sidebar",
+  "description": "A simple sidebar example demonstrating different variants and configurations.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "sidebar",
+    "use-mobile",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/blocks/simple-sidebar/simple-sidebar.tsx",
+      "content": "'use client'\n\nimport * as React from \"react\"\nimport { Home, Settings, User, Menu } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarFooter,\n  SidebarGroup,\n  SidebarGroupLabel,\n  SidebarHeader,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n  SidebarTrigger,\n  SidebarRail,\n} from \"@/registry/new-york/ui/sidebar\"\n\n// Simple navigation data\nconst navItems = [\n  {\n    title: \"Home\",\n    icon: Home,\n    href: \"#\",\n  },\n  {\n    title: \"Profile\",\n    icon: User,\n    href: \"#\",\n  },\n  {\n    title: \"Settings\",\n    icon: Settings,\n    href: \"#\",\n  },\n]\n\nexport function SimpleSidebarExample({\n  variant = \"sidebar\",\n  collapsible = \"icon\",\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  variant?: \"sidebar\" | \"floating\" | \"inset\"\n  collapsible?: \"offcanvas\" | \"icon\" | \"none\"\n}) {\n  return (\n    <SidebarProvider>\n      <div className={cn(\"flex h-[600px]\", className)} {...props}>\n        <Sidebar variant={variant} collapsible={collapsible}>\n          <SidebarHeader>\n            <SidebarMenu>\n              <SidebarMenuItem>\n                <SidebarMenuButton size=\"lg\">\n                  <div className=\"flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground\">\n                    <Menu className=\"size-4\" />\n                  </div>\n                  <div className=\"grid flex-1 text-left text-sm leading-tight\">\n                    <span className=\"truncate font-semibold\">My App</span>\n                    <span className=\"truncate text-xs\">Dashboard</span>\n                  </div>\n                </SidebarMenuButton>\n              </SidebarMenuItem>\n            </SidebarMenu>\n          </SidebarHeader>\n          \n          <SidebarContent>\n            <SidebarGroup>\n              <SidebarGroupLabel>Navigation</SidebarGroupLabel>\n              <SidebarMenu>\n                {navItems.map((item) => (\n                  <SidebarMenuItem key={item.title}>\n                    <SidebarMenuButton asChild>\n                      <a href={item.href}>\n                        <item.icon className=\"mr-2 size-4\" />\n                        <span>{item.title}</span>\n                      </a>\n                    </SidebarMenuButton>\n                  </SidebarMenuItem>\n                ))}\n              </SidebarMenu>\n            </SidebarGroup>\n          </SidebarContent>\n          \n          <SidebarFooter>\n            <SidebarMenu>\n              <SidebarMenuItem>\n                <SidebarMenuButton>\n                  <User className=\"mr-2 size-4\" />\n                  <span>Account</span>\n                </SidebarMenuButton>\n              </SidebarMenuItem>\n            </SidebarMenu>\n          </SidebarFooter>\n          \n          <SidebarRail />\n        </Sidebar>\n        \n        <div className=\"flex flex-1 flex-col\">\n          <header className=\"flex h-14 items-center border-b px-4\">\n            <SidebarTrigger />\n            <h1 className=\"ml-4 text-lg font-semibold\">Simple Sidebar Example</h1>\n          </header>\n          <main className=\"flex flex-1 items-center justify-center p-6\">\n            <div className=\"text-center\">\n              <h2 className=\"text-2xl font-bold mb-2\">Welcome!</h2>\n              <p className=\"text-muted-foreground mb-4\">\n                This is a simple sidebar example with {variant} variant and {collapsible} collapsible behavior.\n              </p>\n              <div className=\"space-y-2\">\n                <p className=\"text-sm\">✨ Click the hamburger menu to toggle</p>\n                <p className=\"text-sm\">⌨️ Press Cmd/Ctrl + B for keyboard shortcut</p>\n                <p className=\"text-sm\">📱 Responsive design for mobile</p>\n              </div>\n            </div>\n          </main>\n        </div>\n      </div>\n    </SidebarProvider>\n  )\n}",
+      "type": "registry:component",
+      "target": "components/simple-sidebar.tsx"
+    }
+  ]
+}

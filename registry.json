@@ -116,6 +116,36 @@
       ]
     },
     {
+      "name": "simple-sidebar",
+      "type": "registry:block",
+      "title": "Simple Sidebar",
+      "description": "A simple sidebar example demonstrating different variants and configurations.",
+      "registryDependencies": ["sidebar", "use-mobile", "button"],
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/simple-sidebar/simple-sidebar.tsx",
+          "type": "registry:component",
+          "target": "components/simple-sidebar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-example",
+      "type": "registry:block",
+      "title": "Sidebar Example",
+      "description": "A complete sidebar example with navigation, projects, and user profile sections.",
+      "registryDependencies": ["sidebar", "use-mobile"],
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/sidebar-example/sidebar-example.tsx",
+          "type": "registry:component",
+          "target": "components/sidebar-example.tsx"
+        }
+      ]
+    },
+    {
       "name": "split-display",
       "type": "registry:block",
       "title": "Split Display",
