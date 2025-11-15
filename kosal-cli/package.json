@@ -1,0 +1,56 @@
+{
+  "name": "kosal",
+  "version": "1.0.2",
+  "description": "A custom CLI for installing components from the Kosal component registry - simplifies shadcn/ui component installation with short commands",
+  "main": "dist/index.js",
+  "bin": {
+    "kosal": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "test": "node dist/index.js --help"
+  },
+  "keywords": [
+    "cli",
+    "registry",
+    "components",
+    "kosal",
+    "shadcn",
+    "ui",
+    "component-library",
+    "react",
+    "typescript",
+    "installation"
+  ],
+  "author": "Kosal <your-email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/your-repo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/your-repo/issues"
+  },
+  "homepage": "https://github.com/your-username/your-repo#readme",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.1",
+    "fs-extra": "^11.2.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/fs-extra": "^11.0.4",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
