@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-mobile",
+  "type": "registry:hook",
+  "title": "Use Mobile",
+  "description": "A hook that detects if the user is on a mobile device.",
+  "files": [
+    {
+      "path": "registry/new-york/hooks/use-mobile.tsx",
+      "content": "import * as React from \"react\"\n\nconst MOBILE_BREAKPOINT = 768\n\nexport function useIsMobile() {\n  const [isMobile, setIsMobile] = React.useState(false)\n\n  React.useEffect(() => {\n    const checkIsMobile = () => {\n      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)\n    }\n\n    // Check on mount\n    checkIsMobile()\n\n    // Add event listener\n    window.addEventListener(\"resize\", checkIsMobile)\n\n    // Cleanup\n    return () => window.removeEventListener(\"resize\", checkIsMobile)\n  }, [])\n\n  return isMobile\n}",
+      "type": "registry:hook"
+    }
+  ]
+}

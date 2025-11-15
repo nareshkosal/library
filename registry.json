@@ -90,6 +90,32 @@
       ]
     },
     {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "Use Mobile",
+      "description": "A hook that detects if the user is on a mobile device.",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-mobile.tsx",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:component",
+      "title": "Sidebar",
+      "description": "A responsive sidebar component with collapsible states and mobile support.",
+      "registryDependencies": ["button", "input", "separator", "sheet", "skeleton", "tooltip"],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/sidebar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "split-display",
       "type": "registry:block",
       "title": "Split Display",
