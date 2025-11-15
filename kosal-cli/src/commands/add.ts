@@ -160,10 +160,29 @@ async function createComponentFiles(files: any[], registryUrl: string) {
         }
       }
       
-      // Fix import paths to use @/ alias
+      // Fix import paths to use @/ alias (but skip if already correct)
       content = content.replace(/from ['"]@\//g, "from '@/");
-      content = content.replace(/import\s+.*\s+from\s+['"]\.\.\/\.\.\/lib\/utils['"]/g, "import { cn } from '@/lib/utils'");
-      content = content.replace(/import\s+.*\s+from\s+['"]\.\.\/ui\//g, "import { $1 } from '@/components/ui/");
+      
+      // Fix relative imports to use @/ alias
+      content = content.replace(/from ['"]\.\.\/lib\/utils['"]/g, "from '@/lib/utils'");
+      content = content.replace(/from ['"]\.\.\/\.\.\/lib\/utils['"]/g, "from '@/lib/utils'");
+      
+      // Fix UI component imports from registry paths to local paths
+      content = content.replace(/from ['"]@\/registry\/[^\/]+\/ui\/([^'"]+)['"]/g, "from '@/components/ui/$1'");
+      content = content.replace(/from ['"]\.\.\/ui\/([^'"]+)['"]/g, "from '@/components/ui/$1'");
+      
+      // Fix relative type imports to use @/ alias
+      content = content.replace(/from ['"]\.\.\/types\/([^'"]+)['"]/g, "from '@/types/$1'");
+      content = content.replace(/from ['"]\.\/types\/([^'"]+)['"]/g, "from '@/types/$1'");
+      
+      // Fix relative component imports (but preserve existing @/ paths)
+      content = content.replace(/from ['"]\.\/([^'"]+)['"]/g, (match, importPath) => {
+        // Don't transform if it's already a valid relative import or starts with @/
+        if (importPath.startsWith('@/') || importPath.startsWith('../') || importPath.startsWith('./')) {
+          return match;
+        }
+        return `from '@/components/${importPath}'`;
+      });
       
       // Ensure directory exists
       await fs.ensureDir(path.dirname(targetPath));
