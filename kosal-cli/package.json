@@ -1,6 +1,6 @@
 {
   "name": "kosal",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A custom CLI for installing components from the Kosal component registry - simplifies shadcn/ui component installation with short commands",
   "main": "dist/index.js",
   "bin": {

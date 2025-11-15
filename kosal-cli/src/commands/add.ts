@@ -16,6 +16,7 @@ interface RegistryItem {
     path: string;
     type: string;
     target?: string;
+    content?: string;
   }>;
 }
 
@@ -134,13 +135,30 @@ async function installDependencies(dependencies: string[]) {
 
 async function createComponentFiles(files: any[], registryUrl: string) {
   for (const file of files) {
-    const fileUrl = `${registryUrl}/${file.path}`;
     const targetPath = file.target || getDefaultTargetPath(file.path);
     
     try {
-      // Fetch file content
-      const response = await fetch(fileUrl);
-      let content = await response.text();
+      let content: string;
+      
+      // Use inline content if available, otherwise fetch from URL
+      if (file.content) {
+        content = file.content;
+      } else {
+        // Fallback to fetching from URL (for backward compatibility)
+        const fileUrl = `${registryUrl}/${file.path}`;
+        const response = await fetch(fileUrl);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch file: ${response.status} ${response.statusText}`);
+        }
+        
+        content = await response.text();
+        
+        // Check if we got HTML instead of the expected content
+        if (content.includes('<!DOCTYPE html>') || content.includes('<html')) {
+          throw new Error(`Received HTML content instead of file content for ${file.path}. This usually means the file doesn't exist at the expected URL.`);
+        }
+      }
       
       // Fix import paths to use @/ alias
       content = content.replace(/from ['"]@\//g, "from '@/");
@@ -156,6 +174,7 @@ async function createComponentFiles(files: any[], registryUrl: string) {
       console.log(chalk.gray(`  Created: ${targetPath}`));
     } catch (error) {
       console.warn(chalk.yellow(`⚠️  Could not create file: ${targetPath}`));
+      console.warn(chalk.yellow(`   Error: ${error instanceof Error ? error.message : String(error)}`));
     }
   }
 }
