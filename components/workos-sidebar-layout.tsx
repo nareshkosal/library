@@ -1,0 +1,1 @@
+export { WorkOSSidebarLayout } from "@/registry/new-york/blocks/workos/sidebar-layout"

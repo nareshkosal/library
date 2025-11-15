@@ -158,6 +158,76 @@
           "target": "components/split-display.tsx"
         }
       ]
+    },
+    {
+      "name": "workos",
+      "type": "registry:block",
+      "title": "WorkOS Authentication",
+      "description": "Complete authentication block with WorkOS AuthKit including login, logout, and user context.",
+      "dependencies": ["@workos-inc/authkit-nextjs"],
+      "registryDependencies": ["sidebar", "button", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/workos/components/header.tsx",
+          "type": "registry:component",
+          "target": "components/header.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/components/sidebar.tsx",
+          "type": "registry:component",
+          "target": "components/sidebar.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/sidebar-layout.tsx",
+          "type": "registry:component",
+          "target": "components/workos-sidebar-layout.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/types/user.ts",
+          "type": "registry:component",
+          "target": "types/workos-user.ts"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/app-layout-complete.tsx",
+          "type": "registry:component",
+          "target": "app/layout.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/app/api/auth/status/route.ts",
+          "type": "registry:component",
+          "target": "app/api/auth/status/route.ts"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/README.md",
+          "type": "registry:component",
+          "target": "WORKOS_INSTALLATION.md"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/contexts/UserContext.tsx",
+          "type": "registry:component",
+          "target": "contexts/UserContext.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/middleware.ts",
+          "type": "registry:component",
+          "target": "middleware.ts"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/app/login/route.ts",
+          "type": "registry:component",
+          "target": "app/login/route.ts"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/app/callback/route.ts",
+          "type": "registry:component",
+          "target": "app/callback/route.ts"
+        },
+        {
+          "path": "registry/new-york/blocks/workos/app/logout/route.ts",
+          "type": "registry:component",
+          "target": "app/logout/route.ts"
+        }
+      ]
     }
   ]
 }
