@@ -20,7 +20,7 @@ program
 program
   .command('add <component>')
   .description('Add a component from the kosal registry')
-  .option('-r, --registry <url>', 'Custom registry URL', 'https://components-kosal.vercel.app')
+  .option('-r, --registry <url>', 'Custom registry URL', 'https://library-five-lovat.vercel.app')
   .action(addCommand);
 
 program.parse();
