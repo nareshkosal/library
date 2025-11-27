@@ -1,5 +1,5 @@
 import React, { createContext, useContext, ReactNode } from "react"
-import type { WorkOSUser } from "../types/workos-user"
+import type { WorkOSUser } from "../types/user"
 
 interface UserContextType {
   user: WorkOSUser | null

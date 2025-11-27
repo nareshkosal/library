@@ -3,7 +3,6 @@
 import * as React from "react"
 import { Home, Settings, User, Menu, LogOut } from "lucide-react"
 import { useRouter } from 'next/navigation'
-import type { WorkOSUser } from "./types/workos-user"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
@@ -27,6 +26,7 @@ import {
   SidebarTrigger,
   SidebarRail,
 } from "@/registry/new-york/ui/sidebar"
+import { WorkOSUser } from "./types/user"
 
 // Navigation data
 const navItems = [
