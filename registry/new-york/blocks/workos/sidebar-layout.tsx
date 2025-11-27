@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Home, Settings, User, Menu, LogOut } from "lucide-react"
 import { useRouter } from 'next/navigation'
-import type { WorkOSUser } from "./types/user"
+import type { WorkOSUser } from "./types/workos-user"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"

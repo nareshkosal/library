@@ -160,28 +160,28 @@ async function createComponentFiles(files: any[], registryUrl: string) {
         }
       }
       
-      // Fix import paths to use @/ alias (but skip if already correct)
-      content = content.replace(/from ['"]@\//g, "from '@/");
+      // Fix import paths to use @/ alias (preserve original quote style)
+      content = content.replace(/from (['"])@\//g, "from $1@/");
       
-      // Fix relative imports to use @/ alias
-      content = content.replace(/from ['"]\.\.\/lib\/utils['"]/g, "from '@/lib/utils'");
-      content = content.replace(/from ['"]\.\.\/\.\.\/lib\/utils['"]/g, "from '@/lib/utils'");
+      // Fix relative imports to use @/ alias (preserve original quote style)
+      content = content.replace(/from (['"])\.\.\/lib\/utils\1/g, "from $1@/lib/utils$1");
+      content = content.replace(/from (['"])\.\.\/\.\.\/lib\/utils\1/g, "from $1@/lib/utils$1");
       
-      // Fix UI component imports from registry paths to local paths
-      content = content.replace(/from ['"]@\/registry\/[^\/]+\/ui\/([^'"]+)['"]/g, "from '@/components/ui/$1'");
-      content = content.replace(/from ['"]\.\.\/ui\/([^'"]+)['"]/g, "from '@/components/ui/$1'");
+      // Fix UI component imports from registry paths to local paths (preserve original quote style)
+      content = content.replace(/from (['"])@\/registry\/[^\/]+\/ui\/([^'"]+)\1/g, "from $1@/components/ui/$2$1");
+      content = content.replace(/from (['"])\.\.\/ui\/([^'"]+)\1/g, "from $1@/components/ui/$2$1");
       
-      // Fix relative type imports to use @/ alias
-      content = content.replace(/from ['"]\.\.\/types\/([^'"]+)['"]/g, "from '@/types/$1'");
-      content = content.replace(/from ['"]\.\/types\/([^'"]+)['"]/g, "from '@/types/$1'");
+      // Fix relative type imports to use @/ alias (preserve original quote style)
+      content = content.replace(/from (['"])\.\.\/types\/([^'"]+)\1/g, "from $1@/types/$2$1");
+      content = content.replace(/from (['"])\.\/types\/([^'"]+)\1/g, "from $1@/types/$2$1");
       
-      // Fix relative component imports (but preserve existing @/ paths)
-      content = content.replace(/from ['"]\.\/([^'"]+)['"]/g, (match, importPath) => {
+      // Fix relative component imports (preserve original quote style)
+      content = content.replace(/from (['"])\.\/([^'"]+)\1/g, (match, quote, importPath) => {
         // Don't transform if it's already a valid relative import or starts with @/
         if (importPath.startsWith('@/') || importPath.startsWith('../') || importPath.startsWith('./')) {
           return match;
         }
-        return `from '@/components/${importPath}'`;
+        return `from ${quote}@/components/${importPath}${quote}`;
       });
       
       // Ensure directory exists

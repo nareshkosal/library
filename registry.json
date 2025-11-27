@@ -8,7 +8,10 @@
       "type": "registry:component",
       "title": "Button",
       "description": "A button component with different variants and sizes.",
-      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui/button.tsx",
@@ -33,7 +36,9 @@
       "type": "registry:component",
       "title": "Label",
       "description": "A styled label component.",
-      "dependencies": ["@radix-ui/react-label"],
+      "dependencies": [
+        "@radix-ui/react-label"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui/label.tsx",
@@ -46,7 +51,9 @@
       "type": "registry:component",
       "title": "Separator",
       "description": "A visual separator component.",
-      "dependencies": ["@radix-ui/react-separator"],
+      "dependencies": [
+        "@radix-ui/react-separator"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui/separator.tsx",
@@ -59,7 +66,10 @@
       "type": "registry:component",
       "title": "Sheet",
       "description": "A sheet component for modal-like content.",
-      "dependencies": ["@radix-ui/react-dialog", "lucide-react"],
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui/sheet.tsx",
@@ -84,7 +94,9 @@
       "type": "registry:component",
       "title": "Tooltip",
       "description": "A tooltip component for additional information.",
-      "dependencies": ["@radix-ui/react-tooltip"],
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui/tooltip.tsx",
@@ -109,7 +121,10 @@
       "type": "registry:component",
       "title": "Dialog",
       "description": "A dialog component for modal content.",
-      "dependencies": ["@radix-ui/react-dialog", "lucide-react"],
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui/dialog.tsx",
@@ -134,7 +149,10 @@
       "type": "registry:component",
       "title": "Dropdown Menu",
       "description": "A dropdown menu component with trigger and content.",
-      "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"],
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui/dropdown-menu.tsx",
@@ -147,7 +165,9 @@
       "type": "registry:component",
       "title": "Hello World",
       "description": "A simple hello world component",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/new-york/blocks/hello-world/hello-world.tsx",
@@ -160,8 +180,16 @@
       "type": "registry:component",
       "title": "Example Form",
       "description": "A contact form with Zod validation.",
-      "dependencies": ["zod"],
-      "registryDependencies": ["button", "input", "label", "textarea", "card"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "textarea",
+        "card"
+      ],
       "files": [
         {
           "path": "registry/new-york/blocks/example-form/example-form.tsx",
@@ -174,7 +202,9 @@
       "type": "registry:component",
       "title": "Complex Component",
       "description": "A complex component showing hooks, libs and components.",
-      "registryDependencies": ["card"],
+      "registryDependencies": [
+        "card"
+      ],
       "files": [
         {
           "path": "registry/new-york/blocks/complex-component/page.tsx",
@@ -220,7 +250,9 @@
       "type": "registry:component",
       "title": "Spinner Size",
       "description": "A spinner component with different size variants.",
-      "registryDependencies": ["spinner"],
+      "registryDependencies": [
+        "spinner"
+      ],
       "files": [
         {
           "path": "registry/new-york/blocks/spinner/spinner.tsx",
@@ -245,8 +277,19 @@
       "type": "registry:component",
       "title": "Sidebar",
       "description": "A responsive sidebar component with collapsible states and mobile support.",
-      "registryDependencies": ["button", "input", "separator", "sheet", "skeleton", "tooltip"],
-      "dependencies": ["@radix-ui/react-slot", "class-variance-authority", "lucide-react"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip"
+      ],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui/sidebar.tsx",
@@ -259,8 +302,14 @@
       "type": "registry:block",
       "title": "Simple Sidebar",
       "description": "A simple sidebar example demonstrating different variants and configurations.",
-      "registryDependencies": ["sidebar", "use-mobile", "button"],
-      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "sidebar",
+        "use-mobile",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/new-york/blocks/simple-sidebar/simple-sidebar.tsx",
@@ -274,8 +323,13 @@
       "type": "registry:block",
       "title": "Sidebar Example",
       "description": "A complete sidebar example with navigation, projects, and user profile sections.",
-      "registryDependencies": ["sidebar", "use-mobile"],
-      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "sidebar",
+        "use-mobile"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/new-york/blocks/sidebar-example/sidebar-example.tsx",
@@ -289,7 +343,11 @@
       "type": "registry:block",
       "title": "Split Display",
       "description": "A 3D video display component with rotating panels using Three.js and React Three Fiber.",
-      "dependencies": ["@react-three/fiber", "@react-three/drei", "three"],
+      "dependencies": [
+        "@react-three/fiber",
+        "@react-three/drei",
+        "three"
+      ],
       "files": [
         {
           "path": "registry/new-york/blocks/split-display/split-display.tsx",
@@ -303,8 +361,14 @@
       "type": "registry:block",
       "title": "WorkOS Authentication",
       "description": "Complete authentication block with WorkOS AuthKit including login, logout, and user context.",
-      "dependencies": ["@workos-inc/authkit-nextjs"],
-      "registryDependencies": ["sidebar", "button", "dropdown-menu"],
+      "dependencies": [
+        "@workos-inc/authkit-nextjs"
+      ],
+      "registryDependencies": [
+        "sidebar",
+        "button",
+        "dropdown-menu"
+      ],
       "files": [
         {
           "path": "registry/new-york/blocks/workos/components/header.tsx",
@@ -365,6 +429,69 @@
           "path": "registry/new-york/blocks/workos/app/logout/route.ts",
           "type": "registry:component",
           "target": "app/logout/route.ts"
+        }
+      ]
+    },
+    {
+      "name": "mountain-scene",
+      "type": "registry:block",
+      "title": "Mountain Scene",
+      "description": "A 3D mountain scene with dynamic lighting, ocean, and clouds using React Three Fiber.",
+      "dependencies": [
+        "@react-three/fiber",
+        "@react-three/drei",
+        "three"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/MountainScene/MountainScene.tsx",
+          "type": "registry:component",
+          "target": "components/mountain-scene/mountain-scene.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/MountainScene/Ocean.tsx",
+          "type": "registry:component",
+          "target": "components/mountain-scene/ocean.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/MountainScene/MountainLake.tsx",
+          "type": "registry:component",
+          "target": "components/mountain-scene/mountain-lake.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/MountainScene/DynamicLighting.tsx",
+          "type": "registry:component",
+          "target": "components/mountain-scene/dynamic-lighting.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/MountainScene/AnimatedCloud.tsx",
+          "type": "registry:component",
+          "target": "components/mountain-scene/animated-cloud.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/MountainScene/StarField.tsx",
+          "type": "registry:component",
+          "target": "components/mountain-scene/star-field.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/MountainScene/NightClouds.tsx",
+          "type": "registry:component",
+          "target": "components/mountain-scene/night-clouds.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/MountainScene/HorizonBackground.tsx",
+          "type": "registry:component",
+          "target": "components/mountain-scene/horizon-background.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/MountainScene/examples.tsx",
+          "type": "registry:component",
+          "target": "components/mountain-scene/examples.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/MountainScene/index.ts",
+          "type": "registry:component",
+          "target": "components/mountain-scene/index.ts"
         }
       ]
     }
